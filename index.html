@@ -445,11 +445,11 @@
 
       <!-- 最壞情境：只有金額紅底 -->
       <div class="calc-row calc-row-worst">
-        <div class="calc-row-label">地下出租最壞情境（5 年追溯）</div>
+        <div class="calc-row-label">地下出租最壞情境（未申報，7 年追溯）</div>
         <div class="calc-row-val">
           <span class="calc-danger-badge" id="lp-val-worst">NT$ 0</span>
         </div>
-        <div class="calc-row-sub">最低罰倍 1.5× 試算，最高可達 4×</div>
+        <div class="calc-row-sub">補稅 + 罰鍰 3 倍 + 滯納金 15%｜尚不含地價稅、房屋稅補繳差額——實際總額只會更高。</div>
       </div>
 
       <p class="calc-disc">試算僅供參考，實際稅額依財政部當年度公告及個人所得狀況為準。稅務建議請洽合格會計師確認。</p>
@@ -708,7 +708,7 @@
     var exempt = Math.min(annual, 6000 * 12);
     var tManaged = Math.max(0, annual - exempt) * (1 - 0.53) * rate;
     var savings = Math.max(0, tSelf - tManaged);
-    var worstCase = tSelf * 5 * 1.5;
+    var worstCase = tSelf * 7 * 4.15; // 7年 × (補稅1 + 罰鍰3倍 + 滯納金15%)
 
     // Bar heights (proportional)
     var maxTax = Math.max(tSelf, tManaged, 1);
@@ -726,7 +726,7 @@
     document.getElementById('lp-val-self').textContent    = fmt(tSelf);
     document.getElementById('lp-val-mgd').textContent     = fmt(tManaged);
     document.getElementById('lp-val-savings').textContent = fmt(savings);
-    document.getElementById('lp-val-worst').textContent   = fmt(worstCase);
+    document.getElementById('lp-val-worst').textContent   = '至少 ' + fmt(worstCase) + ' 起';
   }
 
   function fmt(n) {
