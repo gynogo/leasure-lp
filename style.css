@@ -193,7 +193,7 @@ p  { font-size: 15px; line-height: 1.9; }
 .ba-section h2 { color: var(--white); }
 .ba-section .section-tag { color: rgba(204,153,1,.85); }
 .ba-section .gold-bar { }
-.ba-slider { overflow: hidden; margin-top: 28px; }
+.ba-slider { overflow: hidden; margin-top: 28px; touch-action: pan-y; }
 .ba-track  { display: flex; transition: transform .4s ease; will-change: transform; }
 .ba-pair-label { font-family: var(--font-sans); font-size: 11px; letter-spacing: 0.1em; color: rgba(255,255,255,.4); text-transform: uppercase; margin-bottom: 8px; }
 .ba-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; }
