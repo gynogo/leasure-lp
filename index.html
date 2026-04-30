@@ -445,7 +445,7 @@
 
       <!-- 最壞情境：只有金額紅底 -->
       <div class="calc-row calc-row-worst">
-        <div class="calc-row-label">地下出租最壞情境（未申報，7 年追溯）</div>
+        <div class="calc-row-label">地下出租最壞情境（未申報，以追溯 5 年做計算）</div>
         <div class="calc-row-val">
           <span class="calc-danger-badge" id="lp-val-worst">NT$ 0</span>
         </div>
@@ -708,7 +708,7 @@
     var exempt = Math.min(annual, 6000 * 12);
     var tManaged = Math.max(0, annual - exempt) * (1 - 0.53) * rate;
     var savings = Math.max(0, tSelf - tManaged);
-    var worstCase = tSelf * 7 * 4.15; // 7年 × (補稅1 + 罰鍰3倍 + 滯納金15%)
+    var worstCase = tSelf * 5 * 4.15; // 5年 × (補稅1 + 罰鍰3倍 + 滯納金15%)
 
     // Bar heights (proportional)
     var maxTax = Math.max(tSelf, tManaged, 1);
