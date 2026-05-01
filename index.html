@@ -431,7 +431,7 @@
           <div class="cc-col">
             <div class="cc-amt cc-amt-blue" id="lp-val-mgd">NT$ 0</div>
             <div class="cc-name">委託包租代管</div>
-            <div class="cc-sub">6,000/月免稅 ＋ 53% 扣除</div>
+            <div class="cc-sub">15,000/月免稅 ＋ 43% 扣除</div>
           </div>
         </div>
       </div>
@@ -705,8 +705,8 @@
     var rate = parseInt(document.getElementById('lp-rate').value, 10) / 100;
     var annual = rent * 12;
     var tSelf = annual * (1 - 0.43) * rate;
-    var exempt = Math.min(annual, 6000 * 12);
-    var tManaged = Math.max(0, annual - exempt) * (1 - 0.53) * rate;
+    var exempt = Math.min(annual, 15000 * 12);
+    var tManaged = Math.max(0, annual - exempt) * (1 - 0.43) * rate;
     var savings = Math.max(0, tSelf - tManaged);
     var worstCase = tSelf * 5 * 4.15; // 5年 × (補稅1 + 罰鍰3倍 + 滯納金15%)
 
