@@ -141,16 +141,16 @@ p  { font-size: 15px; line-height: 1.9; }
 .env-card-source {
   display: inline-flex; align-items: center; gap: 5px;
   margin-top: 14px;
-  font-size: 11px; font-weight: 600; color: var(--gold);
+  font-size: 11px; font-weight: 600; color: var(--blue);
   background: transparent;
-  border: 1.5px solid var(--gold);
+  border: 1.5px solid var(--blue);
   border-radius: 20px;
   padding: 6px 14px;
   text-decoration: none;
   transition: background .18s, color .18s;
 }
 .env-card-source::before { content: '🔗'; font-size: 10px; }
-.env-card-source:hover { background: var(--gold); color: var(--dark); }
+.env-card-source:hover { background: var(--blue); color: #fff; }
 .env-footer { font-size: 14px; color: var(--blue); text-decoration: none; display: inline-flex; align-items: center; gap: 6px; }
 
 /* ── COMPARE TABLE ─────────────────────────────── */
