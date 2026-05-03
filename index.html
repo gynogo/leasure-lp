@@ -705,9 +705,17 @@
     var rent = parseFloat(document.getElementById('lp-rent').value) || 0;
     var rate = parseInt(document.getElementById('lp-rate').value, 10) / 100;
     var annual = rent * 12;
-    var tSelf = annual * (1 - 0.43) * rate;
-    var exempt = Math.min(annual, 15000 * 12);
-    var tManaged = Math.max(0, annual - exempt) * (1 - 0.43) * rate;
+    var tSelf = annual * 0.57 * rate;
+    // 包租代管分段累進制：前 6,000 全免；6,001-20,000 部分 × 47%；超過 20,000 部分 × 57%
+    var monthlyTaxable;
+    if (rent <= 6000) {
+      monthlyTaxable = 0;
+    } else if (rent <= 20000) {
+      monthlyTaxable = (rent - 6000) * 0.47;
+    } else {
+      monthlyTaxable = 14000 * 0.47 + (rent - 20000) * 0.57;
+    }
+    var tManaged = monthlyTaxable * 12 * rate;
     var savings = Math.max(0, tSelf - tManaged);
     var worstCase = tSelf * 5 * 4.15; // 5年 × (補稅1 + 罰鍰3倍 + 滯納金15%)
 

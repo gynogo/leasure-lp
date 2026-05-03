@@ -474,10 +474,17 @@ function incomeTax(rent, rate, scenario) {
   }
 
   if (scenario === 'managed') {
-    // 包租代管：月租 ≤6,000 全免；6,001~20,000 適用 53%；>20,000 回歸 43%
-    if (rent <= 6000)  return 0;
-    if (rent <= 20000) return annual * 0.47 * rate;
-    return annual * 0.57 * rate;
+    // 包租代管：分段累進制
+    // 前 6,000 全免；6,001-20,000 部分 × 47%；超過 20,000 部分 × 57%
+    let monthlyTaxable = 0;
+    if (rent <= 6000) {
+      monthlyTaxable = 0;
+    } else if (rent <= 20000) {
+      monthlyTaxable = (rent - 6000) * 0.47;
+    } else {
+      monthlyTaxable = 14000 * 0.47 + (rent - 20000) * 0.57; // 6,580 + 超額 × 57%
+    }
+    return monthlyTaxable * 12 * rate;
   }
 
   if (scenario === 'public') {
